@@ -1,11 +1,13 @@
 {
   "name": "markov-nad-wyraz",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generate Polish proverbs with Markov chains",
-  "main": "index.js",
+  "bin": "./bin/cli.js",
+  "main": "./src/index.js",
   "author": "Staś Małolepszy <stas@mozilla.com>",
   "license": "MIT",
   "dependencies": {
+    "commander": "^2.4.0",
     "polish-proverbs": "^1.0.1",
     "promise": "^6.0.1",
     "titlegen": "0.0.2"

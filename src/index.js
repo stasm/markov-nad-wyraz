@@ -1,5 +1,5 @@
 var Promise = require('promise');
-var util = require('util');
+
 var pp = require('polish-proverbs');
 var titlegen = require('titlegen');
 
@@ -11,9 +11,12 @@ function getProverbs() {
   });
 }
 
-function generateRandom(proverbs) {
+function resetMarkovChain(proverbs) {
   titlegen.feed(proverbs);
-  return titlegen();
+  return titlegen;
 }
 
-getProverbs().then(generateRandom).then(util.puts);
+exports.getGenerator = function() {
+  return getProverbs().then(resetMarkovChain);
+};
+
