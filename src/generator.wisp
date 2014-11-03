@@ -1,14 +1,14 @@
-(ns mnw.generator 
+;include macros.wisp
+
+(ns mnw.generator
   "Create a Markov generator"
-  (:require 
+  (:require
     [promise :as Promise]
     [polish-proverbs :as pp]
     [titlegen]))
 
-;include macros.wisp
-
 (promisify getProverbs []
-  (pp (fn [txt] 
+  (pp (fn [txt]
     (resolv (.split txt "\n")))))
 
 (defn resetMarkovChain [proverbs]
@@ -16,4 +16,6 @@
   titlegen)
 
 (defn getGenerator []
-  (-> (getProverbs) resetMarkovChain))
+  (->
+    (getProverbs)
+    resetMarkovChain))

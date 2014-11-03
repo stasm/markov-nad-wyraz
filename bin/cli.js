@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-var util = require('util');
 var program = require('commander');
 
 program
