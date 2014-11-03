@@ -1,19 +1,18 @@
 (ns mnw.index 
   "Create a Markov generator"
   (:require 
-    [promise :as Promise]
-    [polish-proverbs :as pp]
-    [titlegen]))
+    [mnw.generator :refer [getGenerator]]))
 
 ;include macros.wisp
 
-(promisify getProverbs []
-  (pp (fn [txt] 
-    (resolv (.split txt "\n")))))
+(defn printMultiple [total gen]
+  (loop [i total]
+    (if (> i 0)
+      (do
+        (print (gen))
+        (recur (- i 1))))))
 
-(defn resetMarkovChain [proverbs]
-  (.feed titlegen proverbs)
-  titlegen)
-
-(defn getGenerator []
-  (-> (getProverbs) resetMarkovChain))
+(defn main [program]
+  (->
+    (getGenerator)
+    (.bind printMultiple nil (.-count program))))

@@ -2,8 +2,6 @@
 var util = require('util');
 var program = require('commander');
 
-var getGenerator = require('../dist/index.js').getGenerator;
-
 program
   .version('0.0.1')
   .option(
@@ -14,8 +12,4 @@ function toInt(str) {
   return parseInt(str, 10);
 }
 
-getGenerator().then(function(gen) {
-  for (var i = 0; i < program.count; i++) {
-    util.puts(gen());
-  }
-});
+require('../dist/index.js').main(program);

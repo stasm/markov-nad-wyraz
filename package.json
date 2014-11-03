@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "Generate Polish proverbs with Markov chains",
   "bin": "./bin/cli.js",
-  "main": "./src/index.js",
+  "main": "./dist/index.js",
   "author": "Staś Małolepszy <stas@mozilla.com>",
   "license": "MIT",
   "dependencies": {
