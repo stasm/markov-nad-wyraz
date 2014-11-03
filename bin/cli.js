@@ -2,7 +2,7 @@
 var util = require('util');
 var program = require('commander');
 
-var getGenerator = require('../src/index.js').getGenerator;
+var getGenerator = require('../dist/index.js').getGenerator;
 
 program
   .version('0.0.1')
