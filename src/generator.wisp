@@ -3,19 +3,30 @@
 (ns mnw.generator
   "Create a Markov generator"
   (:require
+    [wisp.sequence :refer [map reduce]]
+    [wisp.string :refer [join split split-lines]]
     [promise :as Promise]
     [polish-proverbs :as pp]
-    [titlegen]))
+    [markoff :as Markov]
+    [mnw.errors :refer [logError]]
+    [mnw.ngram :refer [ngram]]))
 
 (promisify getProverbs []
   (pp (fn [txt]
-    (resolv (.split txt "\n")))))
+    (resolv (split-lines txt)))))
 
-(defn resetMarkovChain [proverbs]
-  (.feed titlegen proverbs)
-  titlegen)
+(defn- tokenize [sequence]
+  (map (bind-fn join "|") (ngram 1 sequence)))
+
+(defn- feed [markov line]
+  (.addTokens markov (tokenize (split line #",?\s+")))
+  markov)
+
+(defn teach [markov proverbs]
+  (reduce feed markov proverbs))
 
 (defn getGenerator []
   (->
     (getProverbs)
-    resetMarkovChain))
+    (bind-fn teach (Markov.))
+    [nil logError]))

@@ -1,3 +1,7 @@
+(defmacro bind-fn
+  [f & params]
+  `(.bind ~f nil ~@params))
+
 (defmacro promisify
   [name args & body]
   `(defn ~name ~args
