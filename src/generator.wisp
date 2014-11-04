@@ -15,18 +15,18 @@
   (pp (fn [txt]
     (resolv (split-lines txt)))))
 
-(defn- tokenize [sequence]
-  (map (bind-fn join "|") (ngram 1 sequence)))
+(defn- tokenize [n sequence]
+  (map (bind-fn join "|") (ngram n sequence)))
 
-(defn- feed [markov line]
-  (.addTokens markov (tokenize (split line #",?\s+")))
+(defn- add-tokens [n markov line]
+  (.addTokens markov (tokenize n (split line #",?\s+")))
   markov)
 
-(defn teach [markov proverbs]
-  (reduce feed markov proverbs))
+(defn teach [n markov proverbs]
+  (reduce (bind-fn add-tokens n) markov proverbs))
 
-(defn getGenerator []
+(defn getGenerator [n]
   (->
     (getProverbs)
-    (bind-fn teach (Markov.))
+    (bind-fn teach n (Markov.))
     [nil logError]))

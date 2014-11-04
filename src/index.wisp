@@ -23,6 +23,6 @@
 
 (defn main [program]
   (->
-    (getGenerator)
+    (getGenerator (.-ngram program))
     (bind-fn printMultiple (.-count program) (.-maxlen program))
     [nil logError]))

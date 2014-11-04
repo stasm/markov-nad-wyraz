@@ -9,6 +9,9 @@ program
   .option(
     '-m, --maxlen <n>',
     'Maximum length of a proverb (default: 7)', toInt, 7)
+  .option(
+    '-n, --ngram <n>',
+    'Split input into n-grams (default: 1)', toInt, 1)
   .parse(process.argv);
 
 function toInt(str) {
