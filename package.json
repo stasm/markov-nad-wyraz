@@ -1,6 +1,6 @@
 {
   "name": "markov-nad-wyraz",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Generate Polish proverbs with Markov chains",
   "bin": "./bin/cli.js",
   "main": "./dist/index.js",
