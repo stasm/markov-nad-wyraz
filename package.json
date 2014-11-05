@@ -9,7 +9,6 @@
   "dependencies": {
     "commander": "^2.4.0",
     "gulp": "^3.8.9",
-    "gulp-inc": "^0.1.1",
     "gulp-wisp": "0.0.1",
     "markoff": "^2.2.0",
     "polish-proverbs": "^1.0.1",

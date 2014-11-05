@@ -21,4 +21,5 @@ function toInt(str) {
   return parseInt(str, 10);
 }
 
-require('../dist/index.js').main(program);
+require('wisp/engine/node');
+require('../src/index').main(program);
