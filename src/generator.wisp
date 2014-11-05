@@ -7,9 +7,6 @@
     [mnw.errors :refer [logError]]
     [mnw.ngram :refer [ngram]]))
 
-(defmacro bind-fn [f & params]
-  `(.bind ~f nil ~@params))
-
 (defn- tokenize
   "Group input vector into stringified n-grams"
   [n sequence]

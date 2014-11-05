@@ -22,4 +22,5 @@ function toInt(str) {
 }
 
 require('wisp/engine/node');
+require('../src/macros');
 require('../src/index').main(program);
