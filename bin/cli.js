@@ -12,6 +12,9 @@ program
   .option(
     '-n, --ngram <n>',
     'Split input into n-grams (default: 1)', toInt, 1)
+  .option(
+    '-i, --input <filename>',
+    'Optional path to a file with proverbs to be used')
   .parse(process.argv);
 
 function toInt(str) {

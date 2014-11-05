@@ -27,7 +27,3 @@
   (reduce ngramize 
           [(padl (dec n) (first tokens))]
           (rest tokens)))
-
-(defn bigram [tokens]
-  "Group tokens into bigrams"
-  (ngram 2 tokens))
